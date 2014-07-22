@@ -46,6 +46,10 @@ For Kioo templates you have to use the reader macro
      {[:span.date] (k/content data)})
 ```
 
+*I haven't actually tested this example code*
+
+I just typed it out quickly while looking at my own working code. If I've made some dumb error please file a ticket and I'll fix it.
+
 ## License
 
 Copyright © 2014 Jesse Sherlock
