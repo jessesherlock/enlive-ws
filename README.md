@@ -4,11 +4,11 @@ A small addition to enlive to strip whitespace from templates on load.
 
 It hooks in using the get-resource and register-resource! multimethods in enlive.
 
-Thanks to clojure's deftype creating a reader macro for you it also works in Kioo to avoid those stupid empty span tags caused by whitespace in templates interacting with React.
+Thanks to clojure's deftype creating a reader macro for you it also works in Kioo (I think you have to be at 1.4.1-SNAPSHOT) to avoid those stupid empty span tags caused by whitespace in templates interacting with React.js.
 
 It's not an ideal solution but it's my second proof of concept and nice enough to use that I'm using it in code that will go to production as soon as it's done.
 
-I expect a more permanent solution will arrive in Kioo at some point soon.
+I get the impression a more permanent solution will arrive in Kioo at some point soon, hopefully with a nicer API than this reader macro although it's not horrible.
 
 ## Usage
 
