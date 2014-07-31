@@ -1,4 +1,4 @@
-(defproject enlive-ws "0.1.1-SNAPSHOT"
+(defproject enlive-ws "0.1.1"
   :description "enlive additions to strip whitespace"
   :url "https://github.com/jessesherlock/enlive-ws"
   :license {:name "Eclipse Public License"
