@@ -1,9 +1,9 @@
 (ns enlive-ws.core
   (:require [net.cgrand.enlive-html :refer [get-resource
                                             register-resource!]]
-            [net.cgrand.tagsoup :as tagsoup])
+            [net.cgrand.jsoup :as jsoup])
   (:import (com.googlecode.htmlcompressor.compressor HtmlCompressor)
-           (java.io StringReader)))
+           (java.io StringBufferInputStream)))
 
 ; Other options here: https://code.google.com/p/htmlcompressor/#Using_HTML_Compressor_from_Java_API
 ; At this point the only non-default I care about is intertag spaces
@@ -12,14 +12,16 @@
 
 (defn html-compressor [] (doto (HtmlCompressor.) (.setRemoveIntertagSpaces true)))
 
-(defn whitepace-stripping-tagsoup-parser [stream]
-  (tagsoup/parser (StringReader. (.compress (html-compressor) (slurp stream)))))
+(defn whitespace-stripping-jsoup-parser [stream]
+  (let [text (.compress (html-compressor) (slurp stream))
+        stream (StringBufferInputStream. text)]
+    (jsoup/parser stream)))
 
 (deftype MiniHtml [resource])
 
 (defmethod get-resource MiniHtml
   [mh _]
-  (let [loader whitepace-stripping-tagsoup-parser
+  (let [loader whitespace-stripping-jsoup-parser
         source (.resource mh)]
     (get-resource source loader)))
 
