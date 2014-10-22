@@ -26,7 +26,7 @@ For enlive templates you can use the reader macro or the type constructor
    [:div.test] (e/content data))
 ```
 
-For Kioo enlive-ws is now built in and minification is done by default
+For Kioo enlive-ws is a dependency and minification is done by default.
 
 ## License
 
